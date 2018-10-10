@@ -34,7 +34,8 @@ describe 'user sees book information' do
   # 
   #   visit '/books'
   #
-  #   expect(page).to have_content("Average Review #{review_1.score}")
+  #   expect(page).to have_content("Average Review #{book_1.average_score}")
+  #
   # end
 
 end
