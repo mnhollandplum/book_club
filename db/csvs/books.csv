@@ -1,20 +1,22 @@
-title,pages,year
-Fundamentals of Wavelets,228,2011
-Data Smart,235,2013
-God Created the Integers,197,2000
-Superfreakonomics,179,2009
-Orientalism,197,1978
-"Nature of Statistical Learning Theory, The",230,1995
-Integration of the Indian States,217,1956
-"Drunkard's Walk, The",197,2008
-Image Processing & Mathematical Morphology,241,2009
-How to Think Like Sherlock Holmes,240,2013
-Data Scientists at Work,230,2014
-Slaughterhouse Five,198,1969
-Birth of a Theorem,234,2015
-Structure & Interpretation of Computer Programs,240,1979
-"Age of Wrath, The",238,2014
-"Trial, The",198,1925
-Statistical Decision Theory,236,1965
-Data Mining Handbook,242,2009
-"New Machiavelli, The",180,1911
+id,title,pages,year
+1,Fundamentals of Wavelets,228,2011
+2,Data Smart,235,2013
+3,God Created the Integers,197,2000
+4,Superfreakonomics,179,2009
+5,Orientalism,197,1978
+6,The Nature of Statistical Learning Theory,230,1995
+7,Integration of the Indian States,217,1956
+8,The Drunkard's Walk,197,2008
+9,Image Processing & Mathematical Morphology,241,2009
+10,How to Think Like Sherlock Holmes,240,2013
+11,Data Scientists at Work,230,2014
+12,Slaughterhouse Five,198,1969
+13,Birth of a Theorem,234,2015
+14,Structure & Interpretation of Computer Programs,240,1979
+15,The Age of Wrath,238,2014
+16,The Trial,198,1925
+17,Statistical Decision Theory,236,1965
+18,Data Mining Handbook,242,2009
+19,The New Machiavelli,180,1911
+20,A Brief History of Time,226,1988
+21,Galapagos,338,1985
