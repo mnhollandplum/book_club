@@ -52,9 +52,10 @@ describe Book, type: :model do
         review_4 = @book_4.reviews.create(title: "This is Nikki's review", explanation: "This is an explanation of the review", score: 2, user: user_4)
       end
 
-      xit 'sorts by average ratings' do
-        expect(Book.sortby(:avg_rating, :asc)).to eq(@book_4)
-        expect(Book.sortby(:avg_rating, :desc)).to eq(@book_1)
+      it 'sorts by average ratings' do
+        expect(Book.sortby(:avg_rating, :asc)).to eq([@book_4, @book_2, @book_3, @book_1])
+
+        expect(Book.sortby(:avg_rating, :DESC)).to eq([@book_1, @book_3, @book_2, @book_4])
       end
 
       it 'sorts by pages' do
@@ -62,7 +63,7 @@ describe Book, type: :model do
         expect(Book.sortby(:page_num, :desc)).to eq([@book_1, @book_3, @book_4, @book_2])
       end
 
-      xit 'sorts by number of reviews' do
+      it 'sorts by number of reviews' do
         expect(Book.sortby(:avg_rating, :asc).first).to eq(@book_4)
         expect(Book.sortby(:avg_rating, :asc).last).to eq(@book_1)
       end
