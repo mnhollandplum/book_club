@@ -17,9 +17,9 @@ class Book < ApplicationRecord
       order(pages: dir)
     elsif criteria ==
     :avg_rating
-      joins(:reviews).order("reviews.score #{dir}")
+      select('books.*, avg(reviews.score) as average_score').joins(:reviews).group(:id).order("average_score #{dir}")
     elsif criteria == :review_num
-      joins(:reviews).order("reviews.count #{dir}")
+      select('books.*, reviews.count as count').joins(:reviews).group(:id).order("count #{dir}")
     end
 
   end
