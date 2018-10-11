@@ -12,9 +12,14 @@ class Book < ApplicationRecord
     reviews.average(:score)
   end
 
-  def self.sortby(criteria, order)
+  def self.sortby(criteria, dir)
     if criteria == :page_num
-      order(pages: order)
+      order(pages: dir)
+    elsif criteria ==
+    :avg_rating
+      select('books.*, avg(reviews.score) as average_score').joins(:reviews).group(:id).order("average_score #{dir}")
+    elsif criteria == :review_num
+      select('books.*, reviews.count as count').joins(:reviews).group(:id).order("count #{dir}")
     end
 
   end
