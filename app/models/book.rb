@@ -5,10 +5,19 @@ class Book < ApplicationRecord
   has_many :reviews
 
   def reviews_count
-    reviews.size
+    reviews.count
   end
 
   def average_score
     reviews.average(:score)
   end
+
+  def self.sortby(criteria, order)
+    if criteria == :page_num
+      order(pages: order)
+    end
+
+  end
+
+
 end
