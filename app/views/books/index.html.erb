@@ -4,5 +4,6 @@
   <li>Title: <%= book.title %></li>
   <li># of Pages: <%= book.pages %></li>
   <li>Year: <%= book.year %></li>
-  <li>Authors: <% book.authors %></li>
+  <li>Authors: <%book.authors.each do |author|%>
+     <%= author.first_name + " " + author.last_name %></li> <%end%>
   <% end %>
