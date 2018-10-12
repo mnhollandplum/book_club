@@ -58,9 +58,7 @@ describe Book, type: :model do
       end
 
       it 'sorts by average ratings' do
-
         expect(Book.sortby(:avg_rating, :asc)).to eq([@book_4, @book_2, @book_3, @book_1])
-
         expect(Book.sortby(:avg_rating, :DESC)).to eq([@book_1, @book_3, @book_2, @book_4])
       end
 
@@ -71,7 +69,7 @@ describe Book, type: :model do
 
       it 'sorts by number of reviews' do
         expect(Book.sortby(:review_num, :asc).first).not_to eq(@book_4)
-        expect(Book.sortby(:review_num, :asc).last).to eq(@book_4)
+        expect(Book.sortby(:review_num, :desc).first).to eq(@book_4)
       end
     end
   end
