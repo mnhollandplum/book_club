@@ -12,6 +12,10 @@ class Book < ApplicationRecord
     reviews.average(:score)
   end
 
+  def sort_reviews(dir)
+    reviews.order("score #{dir}").limit(3)
+  end
+
   def self.sortby(criteria, dir)
     if criteria == :page_num
       order(pages: dir)
