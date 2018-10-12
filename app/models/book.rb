@@ -21,8 +21,6 @@ class Book < ApplicationRecord
     elsif criteria == :review_num
       select('books.*, reviews.count as count').joins(:reviews).group(:id).order("count #{dir}")
     end
-
   end
-
 
 end
