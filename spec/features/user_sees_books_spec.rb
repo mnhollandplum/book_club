@@ -19,22 +19,13 @@ describe 'user sees book information' do
     expect(page).to have_content(book_2.title)
     expect(page).to have_content("Pages: #{book_2.pages}")
     expect(page).to have_content("Year: #{book_2.year}")
-    expect(page).to have_content("Author(s): #{author_1.first_name} #{author_1.last_name}")
-    expect(page).to have_content("Author(s): #{author_2.first_name} #{author_2.last_name}")
     expect(page).to have_content("Rating: #{book_1.average_score}")
     expect(page).to have_content("Total Reviews: #{book_1.reviews_count}")
-  end
+    expect(page).to have_content("#{author_1.first_name}")
+    expect(page).to have_content("#{author_1.last_name}")
+    expect(page).to have_content("#{author_2.first_name}")
+    expect(page).to have_content("#{author_2.last_name}")
 
-  # it 'user sees average book rating' do
-  #   book_1 = Book.create!(title: "Norm's book", pages: 1566, year: 1967)
-  #   book_2 = Book.create!(title: "Nikki's book", pages: 2, year: 1990)
-  #   review_1 = book_1.reviews.create(title: "This is Norm's review", explanation: "This is Norm's explanation of the review", score: 5)
-  #   review_2 = book_2.reviews.create(title: "This is Nikki's review", explanation: "This is Nikki's explanation of the review", score: 5)
-  #
-  #   visit '/books'
-  #
-  #   expect(page).to have_content("Average Review #{book_1.average_score}")
-  #
-  # end
+  end
 
 end
