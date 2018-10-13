@@ -31,19 +31,25 @@
   		<h1><%= @book.title %></h1>
   		<h3>Published in: <%= @book.year %></h3>
   		<p>Length: <%= @book.pages %> pages</p>
+      <p>Authors: <% @book.authors.each do |author| %>
+        <%= author.first_name %>
+        <%= author.last_name%><%= ", " unless author == @book.authors.last %>
+        <% end %>
+      </p>
   		<br>
   		<p><a class="btn btn-primary btn-lg" href="#" role="button">Add your review »</a> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this book »</a></p>
   	</div>
   </div>
   <div class="container">
-    <div class="row">
-      <div class="col-md-auto">
-        <h3>Reviews</h3>
-        <p></b>Title: </b></p>
-        <p>Score: </p>
-        <p>Details: <p>
+    <h3>Reviews</h3>
+    <% @book.reviews.each do |review| %>
+      <div class="row">
+        <p><b><%= review.title %></b></p>
+        <p><b>Score: <%= review.score %></b></p>
+        <p>User: <%= review.user_id %></p>
+        <p>Review: <%= review.explanation %></p>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
