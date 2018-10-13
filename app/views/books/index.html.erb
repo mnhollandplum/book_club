@@ -30,7 +30,14 @@
   	<div class="container">
   		<h1>Welcome to the Book Database</h1>
   		<h3>Book Statistics:</h3>
-  		<p>Put statistics here:</p>
+  		<p>Top Three Book: <% @top_three.each do |top| %>
+        <%=top.title%><%=", " unless top == @top_three.last%>
+        <% end %>
+      </p>
+  		<p>Bottom Three Book: <% @bottom_three.each do |bottom| %>
+        <%=bottom.title%><%=", " unless bottom == @bottom_three.last%>
+        <% end %>
+      </p>
   		<br>
   		<div class="dropdown"> sort by: <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Average Rating<span class="caret"></span></a>
         <ul class="dropdown-menu">
