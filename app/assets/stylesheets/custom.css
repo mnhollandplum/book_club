@@ -11,3 +11,15 @@
 }
 
 .breakdown{ flex-wrap: nowrap; }
+
+.dropdown {
+    display: inline;
+}
+
+.col-md-2:nth-child(6n+1) {
+    clear: both;
+}
+
+.col-md-2 {
+    padding-bottom: 40px;
+}
