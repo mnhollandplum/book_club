@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book Club</title>
+    <title>Book Club: </title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
 <body>
@@ -28,34 +28,22 @@
   </nav>
   <div class="jumbotron">
   	<div class="container">
-  		<h1>Welcome to the Book Database</h1>
-  		<h3>Book Statistics:</h3>
-  		<p>Put statistics here:</p>
+  		<h1><%= @book.title %></h1>
+  		<h3>Published in: <%= @book.year %></h3>
+  		<p>Length: <%= @book.pages %> pages</p>
   		<br>
-  		<p><a class="btn btn-primary btn-lg" href="#" role="button">Some sort of button</a> <a class="btn btn-primary btn-lg" href="#" role="button">Another »</a></p>
+  		<p><a class="btn btn-primary btn-lg" href="#" role="button">Add your review »</a> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this book »</a></p>
   	</div>
   </div>
-
   <div class="container">
-    <% @books.each do |book| %>
-    	<div class="row">
-    		<div class="col-md-2">
-          <p>Title: <%= book.title %></p>
-          <p># of Pages: <%= book.pages %></p>
-          <p>Publicatuon Year: <%= book.year %></p>
-          <p>Rating: <%= book.average_score %><p>
-          <p>Total Reviews: <%= book.reviews_count %><p>
-          <p><i>Author(s)</i></p>
-          <%book.authors.each do |author|%>
-          <div class="col-md-2">
-            <div class="breakdown">
-              <p><b><%= author.first_name + " " + author.last_name %></b></p>
-          <% end %>
-            </div>
-          </div>
-    		</div>
-    	</div>
-    <% end %>
+    <div class="row">
+      <div class="col-md-auto">
+        <h3>Reviews</h3>
+        <p></b>Title: </b></p>
+        <p>Score: </p>
+        <p>Details: <p>
+      </div>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
