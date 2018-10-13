@@ -1,9 +1,12 @@
 <h1> Welcome to the Book Database </h1>
 
 <% @books.each do |book| %>
-  <li>Title: <%= book.title %></li>
-  <li># of Pages: <%= book.pages %></li>
-  <li>Year: <%= book.year %></li>
-  <li>Authors: <%book.authors.each do |author|%>
+  <p>Title: <%= book.title %></p>
+  <p># of Pages: <%= book.pages %></p>
+  <p>Publicatuon Year: <%= book.year %></p>
+  <p>Author(s): <%book.authors.each do |author|%>
      <%= author.first_name + " " + author.last_name %></li> <%end%>
+     <p>Rating: <%= book.average_score %><p>
+     <p>Total Reviews: <%= book.reviews_count %><p>
+
   <% end %>
