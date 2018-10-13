@@ -33,5 +33,4 @@ class Book < ApplicationRecord
      select('books.*, reviews.count as count').left_outer_joins(:reviews).group(:id).order("count #{dir}")
    end
  end
-
 end
