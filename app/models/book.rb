@@ -15,7 +15,7 @@ class Book < ApplicationRecord
  def average_score
    if reviews.average(:score) == nil
      then result = 0.0
-   else result = reviews.average(:score).to_i.round(1)
+   else result = reviews.average(:score).to_f.round(2)
    end
    result
  end
