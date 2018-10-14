@@ -36,6 +36,20 @@
         <%= author.last_name%><%= ", " unless author == @book.authors.last %>
         <% end %>
       </p>
+      <p>Average Review Score: <%= @book.average_score %> </p>
+      <small class="top_three">Top Three Reviews: <% @book.sort_reviews(:desc).each do |review| %>
+        "<%= review.title %>"
+        Score: <%= review.score%> by <%= review.user.username%>
+        <%=". " unless review == @book.sort_reviews(:desc).last%>
+        <% end %>
+      </small>
+      <br>
+      <small class="bottom_three">Bottom Three Reviews: <% @book.sort_reviews(:asc).each do |review| %>
+        "<%= review.title %>"
+        Score: <%= review.score%> by <%= review.user.username%>
+        <%=". " unless review == @book.sort_reviews(:asc).last%>
+        <% end %>
+      </small>
   		<br>
   		<p><a class="btn btn-primary btn-lg" href="#" role="button">Add your review »</a> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this book »</a></p>
   	</div>
