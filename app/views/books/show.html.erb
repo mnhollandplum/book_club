@@ -59,7 +59,7 @@
     <% @book.reviews.each do |review| %>
       <div class="row">
         <p><b><%= review.title %></b></p>
-        <p><b>Score: <%= review.score %></b></p>
+        <p><b>Average Score: <%= review.score %></b></p>
         <p>User: <%= review.user_id %></p>
         <p>Review: <%= review.explanation %></p>
       </div>

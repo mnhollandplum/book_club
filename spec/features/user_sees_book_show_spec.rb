@@ -27,7 +27,7 @@ describe 'user sees individual book information' do
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content("Length: #{@book_1.pages}")
     expect(page).to have_content("Published in: #{@book_1.year}")
-    expect(page).to have_content("Average Score: #{@book_1.average_score}")
+    expect(page).to have_content("Average Review Score: #{@book_1.average_score}")
   end
 
   it 'user sees book statistics' do
