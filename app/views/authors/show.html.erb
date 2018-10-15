@@ -30,8 +30,22 @@
   	<div class="container">
   		<h1><%= @author.first_name %><%=" "%><%= @author.last_name %></h1>
       <p>Book(s): <% @author.books.each do |book| %>
-        <p> Title: <%=book.title %> Pages: <%=book.pages%></p>
-        <% end %>
+        <h3><%=book.title %> Pages: <%=book.pages%></h3>
+            <%book.authors.each do |author|%>
+              <%if author != @author %>
+            Other Author(s): <%=author.first_name%> <%=" "%> <%=author.first_name%>
+          <br>
+          <% end %>
+          <%review = book.sort_reviews(:asc).last%>
+          <%if !book.reviews.empty?%>
+          <p> Highest Rated Review:</p>
+          <p>Title: <%=review.title%><p>
+          <p>Score: <%=review.score%><p>
+          <p>User: <%=review.user.username%><p>
+            <%else%> <p>No Reviews</p>
+          <%end%>
+        <%end%>
+      <%end%>
       </p>
   		<br>
   		<p> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this Author »</a></p>
