@@ -21,6 +21,7 @@ describe User, type: :model do
       @user_1 = User.create(username: "funky1")
       @user_2 = User.create(username: "notfunky")
       @user_3 = User.create(username: "badabingbadaboom")
+      @user_4 = User.create(username: "ikkipay")
 
       @review_1 = book_1.reviews.create(title: "review 1", explanation: "This is an explanation of the review", score: 5, user: @user_1)
       @review_2 = book_2.reviews.create(title: "review 2", explanation: "This is an explanation of the review", score: 3, user: @user_2)
@@ -36,9 +37,13 @@ describe User, type: :model do
       expect(actual).to eq(expected)
     end
 
+    it 'sorts by lastest reviews' do
+      expect(@user_3.reviews_bydate(:asc).first).to eq(@review_3)
+      expect(@user_3.reviews_bydate(:desc).first).to eq(@review_5)
+    end
+
     it 'sorts by number of reviews' do
-      expect(@user_3.reviews_sortby(:asc).first).to eq(@review_3)
-      expect(@user_3.reviews_sortby(:desc).first).to eq(@review_5)
+      expect(User.top_reviewers).to eq([@user_3, @user_2, @user_1])
     end
 
   end
