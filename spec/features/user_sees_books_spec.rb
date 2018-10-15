@@ -11,7 +11,7 @@ describe 'user sees book information' do
     review_1 = book_1.reviews.create(title: "This is Norm's review", explanation: "This is Norm's explanation of the review", score: 5, user: user_1)
     review_2 = book_1.reviews.create(title: "This is Nikki's review", explanation: "This is Nikki's explanation of the review", score: 3, user: user_2)
 
-    visit '/books'
+    visit books_path
 
     expect(page).to have_content(book_1.title)
     expect(page).to have_content("Pages: #{book_1.pages}")
@@ -56,7 +56,7 @@ describe 'user can sort by buttons' do
   end
 
     it 'user can sort ascending by average rating' do
-    visit '/books?criteria=avg_rating&dir=asc'
+    visit books_path('criteria=avg_rating&dir=asc')
     expect(page.body.index(@book_4.title) > page.body.index(@book_5.title)).to eq(true)
     expect(page.body.index(@book_2.title) > page.body.index(@book_4.title)).to eq(true)
     expect(page.body.index(@book_3.title) < page.body.index(@book_2.title)).to eq(true)
@@ -64,7 +64,7 @@ describe 'user can sort by buttons' do
     end
 
     it 'user can sort descending by average rating' do
-      visit '/books?criteria=avg_rating&dir=desc'
+      visit books_path('criteria=avg_rating&dir=desc')
       expect(page.body.index(@book_5.title) < page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_4.title) < page.body.index(@book_2.title)).to eq(true)
       expect(page.body.index(@book_3.title) < page.body.index(@book_2.title)).to eq(true)
@@ -72,7 +72,7 @@ describe 'user can sort by buttons' do
     end
 
     it 'user can sort ascending by page number' do
-      visit '/books?criteria=page_num&dir=asc'
+      visit books_path('criteria=page_num&dir=asc')
       expect(page.body.index(@book_2.title) > page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_3.title) < page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_4.title) > page.body.index(@book_3.title)).to eq(true)
@@ -80,7 +80,7 @@ describe 'user can sort by buttons' do
     end
 
     it 'user can sort descending by page number' do
-      visit '/books?criteria=page_num&dir=desc'
+      visit books_path('criteria=page_num&dir=desc')
       expect(page.body.index(@book_2.title) > page.body.index(@book_3.title)).to eq(true)
       expect(page.body.index(@book_3.title) < page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_4.title) > page.body.index(@book_5.title)).to eq(true)
@@ -88,7 +88,7 @@ describe 'user can sort by buttons' do
     end
 
     it 'user can sort ascending by number of reviews' do
-      visit '/books?criteria=review_num&dir=asc'
+      visit books_path('criteria=review_num&dir=asc')
       expect(page.body.index(@book_3.title) > page.body.index(@book_1.title)).to eq(true)
       expect(page.body.index(@book_1.title) < page.body.index(@book_2.title)).to eq(true)
       expect(page.body.index(@book_2.title) > page.body.index(@book_5.title)).to eq(true)
@@ -96,7 +96,7 @@ describe 'user can sort by buttons' do
     end
 
     it 'user can sort descending by number of reviews' do
-      visit '/books?criteria=review_num&dir=desc'
+      visit books_path('criteria=review_num&dir=desc')
       expect(page.body.index(@book_5.title) < page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_5.title) < page.body.index(@book_2.title)).to eq(true)
       expect(page.body.index(@book_2.title) > page.body.index(@book_1.title)).to eq(true)
