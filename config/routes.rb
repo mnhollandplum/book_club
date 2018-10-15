@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :books
   resources :user, only:[:index]
-  resources :author, only:[:index]
+  resources :authors
 
 end

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Club: </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+<body>
+  <nav class="navbar navbar-inverse navbar-static-top">
+  	<div class="container">
+  		<div class="navbar-header">
+  			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+  				<span class="sr-only">Toggle navigation</span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  			</button>
+  			<a class="navbar-brand" href="http://localhost:3000/books">Book Club</a>
+  		</div>
+  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  			<ul class="nav navbar-nav navbar-right">
+          <li><a href="http://localhost:3000/books/new">Add New Book</a></li>
+  			</ul>
+  		</div>
+  	</div>
+  </nav>
+  <div class="jumbotron">
+  	<div class="container">
+  		<h1><%= @author.first_name %><%=" "%><%= @author.last_name %></h1>
+      <p>Book(s): <% @author.books.each do |book| %>
+        <p> Title: <%=book.title %> Pages: <%=book.pages%></p>
+        <% end %>
+      </p>
+  		<br>
+  		<p> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this Author »</a></p>
+  	</div>
+  </div>

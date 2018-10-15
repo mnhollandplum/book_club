@@ -57,51 +57,50 @@ describe 'user can sort by buttons' do
 
     it 'user can sort ascending by average rating' do
     visit '/books?criteria=avg_rating&dir=asc'
-    expect(page.body.index(@book_5.title) > page.body.index(@book_1.title)).to eq(true)
-    expect(page.body.index(@book_1.title) > page.body.index(@book_3.title)).to eq(true)
-    expect(page.body.index(@book_3.title) > page.body.index(@book_2.title)).to eq(true)
+    expect(page.body.index(@book_4.title) > page.body.index(@book_5.title)).to eq(true)
     expect(page.body.index(@book_2.title) > page.body.index(@book_4.title)).to eq(true)
-
+    expect(page.body.index(@book_3.title) < page.body.index(@book_2.title)).to eq(true)
+    expect(page.body.index(@book_1.title) < page.body.index(@book_3.title)).to eq(true)
     end
 
     it 'user can sort descending by average rating' do
       visit '/books?criteria=avg_rating&dir=desc'
-      expect(page.body.index(@book_4.title) > page.body.index(@book_2.title)).to eq(true)
-      expect(page.body.index(@book_2.title) > page.body.index(@book_3.title)).to eq(true)
-      expect(page.body.index(@book_3.title) > page.body.index(@book_1.title)).to eq(true)
+      expect(page.body.index(@book_5.title) < page.body.index(@book_4.title)).to eq(true)
+      expect(page.body.index(@book_4.title) < page.body.index(@book_2.title)).to eq(true)
+      expect(page.body.index(@book_3.title) < page.body.index(@book_2.title)).to eq(true)
       expect(page.body.index(@book_1.title) > page.body.index(@book_5.title)).to eq(true)
     end
 
     it 'user can sort ascending by page number' do
       visit '/books?criteria=page_num&dir=asc'
-      expect(page.body.index(@book_1.title) > page.body.index(@book_5.title)).to eq(true)
-      expect(page.body.index(@book_5.title) > page.body.index(@book_4.title)).to eq(true)
+      expect(page.body.index(@book_2.title) > page.body.index(@book_4.title)).to eq(true)
+      expect(page.body.index(@book_3.title) < page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_4.title) > page.body.index(@book_3.title)).to eq(true)
-      expect(page.body.index(@book_3.title) > page.body.index(@book_2.title)).to eq(true)
+      expect(page.body.index(@book_3.title) < page.body.index(@book_2.title)).to eq(true)
     end
 
     it 'user can sort descending by page number' do
       visit '/books?criteria=page_num&dir=desc'
       expect(page.body.index(@book_2.title) > page.body.index(@book_3.title)).to eq(true)
-      expect(page.body.index(@book_3.title) > page.body.index(@book_4.title)).to eq(true)
+      expect(page.body.index(@book_3.title) < page.body.index(@book_4.title)).to eq(true)
       expect(page.body.index(@book_4.title) > page.body.index(@book_5.title)).to eq(true)
-      expect(page.body.index(@book_5.title) > page.body.index(@book_1.title)).to eq(true)
+      expect(page.body.index(@book_5.title) < page.body.index(@book_1.title)).to eq(true)
     end
 
     it 'user can sort ascending by number of reviews' do
       visit '/books?criteria=review_num&dir=asc'
       expect(page.body.index(@book_3.title) > page.body.index(@book_1.title)).to eq(true)
-      expect(page.body.index(@book_1.title) > page.body.index(@book_2.title)).to eq(true)
+      expect(page.body.index(@book_1.title) < page.body.index(@book_2.title)).to eq(true)
       expect(page.body.index(@book_2.title) > page.body.index(@book_5.title)).to eq(true)
       expect(page.body.index(@book_4.title) > page.body.index(@book_5.title)).to eq(true)
     end
 
     it 'user can sort descending by number of reviews' do
       visit '/books?criteria=review_num&dir=desc'
-      expect(page.body.index(@book_5.title) > page.body.index(@book_4.title)).to eq(true)
-      expect(page.body.index(@book_5.title) > page.body.index(@book_2.title)).to eq(true)
+      expect(page.body.index(@book_5.title) < page.body.index(@book_4.title)).to eq(true)
+      expect(page.body.index(@book_5.title) < page.body.index(@book_2.title)).to eq(true)
       expect(page.body.index(@book_2.title) > page.body.index(@book_1.title)).to eq(true)
-      expect(page.body.index(@book_1.title) > page.body.index(@book_3.title)).to eq(true)
+      expect(page.body.index(@book_1.title) < page.body.index(@book_3.title)).to eq(true)
     end
 
 end
