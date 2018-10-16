@@ -11,13 +11,7 @@
   <nav class="navbar navbar-inverse navbar-static-top">
   	<div class="container">
   		<div class="navbar-header">
-  			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-  				<span class="sr-only">Toggle navigation</span>
-  				<span class="icon-bar"></span>
-  				<span class="icon-bar"></span>
-  				<span class="icon-bar"></span>
-  			</button>
-  			<a class="navbar-brand" href="http://localhost:3000/books">Book Club</a>
+  			<a class="navbar-brand" href="http://localhost:3000/books">Home </a>
   		</div>
   		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   			<ul class="nav navbar-nav navbar-right">
@@ -28,14 +22,17 @@
   </nav>
   <div class="jumbotron">
   	<div class="container">
-  		<h1>Welcome to the Book Database</h1>
-  		<h3>Book Statistics:</h3>
-  		<p>Top Three Book: <% @top_three.each do |top| %>
+  		<h3>Book Club Database</h3>
+  		<p class="top_three">Top Three Books: <% @top_three.each do |top| %>
         <%=top.title%><%=", " unless top == @top_three.last%>
         <% end %>
       </p>
-  		<p>Bottom Three Book: <% @bottom_three.each do |bottom| %>
+  		<p class="bottom_three">Bottom Three Books: <% @bottom_three.each do |bottom| %>
         <%=bottom.title%><%=", " unless bottom == @bottom_three.last%>
+        <% end %>
+      </p>
+      <p>Top Three Reviewers: <% @top_three_reviewers.each do |t| %>
+        <%=t.username%><%=", " unless t == @top_three_reviewers.last%>
         <% end %>
       </p>
   		<br>
@@ -67,7 +64,7 @@
           <b>Title: <%= book.title %></b>
           <p># of Pages: <%= book.pages %></p>
           <p>Publication Year: <%= book.year %></p>
-          <p>Rating: <%= book.average_score %><p>
+          <p>Rating: <%= book.average_rating %><p>
           <p>Total Reviews: <%= book.reviews_count %><p>
           <p><i>Author(s):</i></p>
           <%book.authors.each do |author|%>

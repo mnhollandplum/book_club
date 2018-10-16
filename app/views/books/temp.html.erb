@@ -17,3 +17,8 @@
     <li><a href="https://github.com/mnhollandplum">Nikki</a></li>
   </ul>
 </li>
+
+<p>Top Three Reviewers: <% @top_three_reviewers.each do |t| %>
+  <%=t.username%><%=", " unless t == @top_three_reviewers.last%>
+  <% end %>
+</p>

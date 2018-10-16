@@ -6,8 +6,12 @@ class User < ApplicationRecord
     reviews.count
   end
 
-  def reviews_sortby(dir)
+  def reviews_bydate(dir)
     reviews.order("created_at #{dir}")
+  end
+
+  def self.top_reviewers
+      select('users.*, reviews.count as count').joins(:reviews).group(:id).order(:count).reverse_order
   end
 
 end
