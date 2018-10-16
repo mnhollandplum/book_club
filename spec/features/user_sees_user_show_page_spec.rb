@@ -25,7 +25,7 @@ describe 'user sees user show page' do
   end
 
   it 'should show all of the users reviews' do
-    visit "/users/2"
+    visit "/users/1"
      expect(page).to have_content("Title: #{@review_1.title}")
      expect(page).to have_content("Title: #{@review_2.title}")
      expect(page).to have_content("Title: #{@review_3.title}")
