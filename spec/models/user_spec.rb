@@ -46,6 +46,10 @@ describe User, type: :model do
       expect(User.top_reviewers).to eq([@user_3, @user_2, @user_1])
     end
 
+    xit 'deletes a review' do
+      @user_1.delete_review(@user_1)
+    end
+
   end
 
 end
