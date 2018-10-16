@@ -13,9 +13,4 @@ class User < ApplicationRecord
   def self.top_reviewers
     select('users.*, reviews.count as count').joins(:reviews).group(:id).order(:count).reverse_order
   end
-
-  # def delete_review(identifier)
-  #   # review.destroy()
-  # end
-  #
 end
