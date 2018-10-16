@@ -177,19 +177,19 @@ end
 
 describe 'user can delete a book' do
   it 'user wont see the book no mo' do
-    book_1 = Book.create(id: 1, title: "Norm's book", pages: 1566, year: 1967)
-    book_2 = Book.create(id: 2, title: "Nikki's book", pages: 2, year: 1990)
-    author_1 = book_1.authors.create(first_name: "Norm", last_name: "Schultz")
-    author_2 = book_2.authors.create(first_name: "Nikki", last_name: "Holland-Plum")
-    user_1 = User.create(username: "funky1")
-    user_2 = User.create(username: "notfunky")
-    review_1 = book_1.reviews.create(title: "This is Norm's review", explanation: "This is Norm's explanation of the review", score: 5, user: user_1)
-    review_2 = book_1.reviews.create(title: "This is Nikki's review", explanation: "This is Nikki's explanation of the review", score: 3, user: user_2)
+    book_99 = Book.create(id: 1, title: "Norm's book", pages: 1566, year: 1967)
+    book_89 = Book.create(id: 2, title: "Nikki's book", pages: 2, year: 1990)
+    author_99 = book_99.authors.create(first_name: "Norm", last_name: "Schultz")
+    author_89 = book_89.authors.create(first_name: "Nikki", last_name: "Holland-Plum")
+    user_99 = User.create(username: "funky1")
+    user_89 = User.create(username: "notfunky")
+    review_99 = book_99.reviews.create(title: "This is Norm's review", explanation: "This is Norm's explanation of the review", score: 5, user: user_99)
+    review_89 = book_99.reviews.create(title: "This is Nikki's review", explanation: "This is Nikki's explanation of the review", score: 3, user: user_89)
 
     visit book_path(1)
     click_on "destroy"
 
-    expect(page).to_not have_content (book_1.title)
+    expect(page).to_not have_content (book_99.title)
 
   end
 end

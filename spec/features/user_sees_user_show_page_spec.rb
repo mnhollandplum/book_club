@@ -25,7 +25,7 @@ describe 'user sees user show page' do
   end
 
   it 'should show all of the users reviews' do
-    visit "/users/1"
+    visit "/users/2"
      expect(page).to have_content("Title: #{@review_1.title}")
      expect(page).to have_content("Title: #{@review_2.title}")
      expect(page).to have_content("Title: #{@review_3.title}")
@@ -33,14 +33,14 @@ describe 'user sees user show page' do
    end
 
   it 'should allow user to sort reviews by descending chronological order' do
-    visit user_path(@user_1)
+    visit "/users/1"
     find('.dropdown-menu', :text => 'Descending').click
     expect(page.body.index(@review_3.explanation) > page.body.index(@review_2.explanation)).to eq(true)
     expect(page.body.index(@review_2.explanation) > page.body.index(@review_1.explanation)).to eq(true)
   end
 
   it 'should allow user to sort reviews by ascending chronological order' do
-    visit user_path(@user_1)
+    visit "/users/1"
     find('.dropdown-menu', :text => 'Ascending').click
     expect(page.body.index(@review_3.explanation) > page.body.index(@review_2.explanation)).to eq(true)
     expect(page.body.index(@review_2.explanation) > page.body.index(@review_1.explanation)).to eq(true)
