@@ -11,6 +11,6 @@ class User < ApplicationRecord
   end
 
   def self.top_reviewers
-      select('users.*, reviews.count as count').joins(:reviews).group(:id).order(:count).reverse_order
+    select('users.*, reviews.count as count').joins(:reviews).group(:id).order(:count).reverse_order
   end
 end

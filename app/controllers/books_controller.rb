@@ -7,14 +7,22 @@ class BooksController < ApplicationController
 
     if params['criteria']
       @books = Book.all.sortby(params['criteria'].to_sym, params['dir'].to_sym)
-
     else
       @books = Book.all
     end
+
   end
 
   def show
     @book = Book.find(params[:id])
+  end
+
+  def destroy
+    # @book = Book.find(params[:id])
+    AuthorBook.where(book_id: params['id']).destroy_all
+    Review.where(book_id: params['id']).destroy_all
+    Book.destroy(params['id'])
+    redirect_to books_path
   end
 
 end
