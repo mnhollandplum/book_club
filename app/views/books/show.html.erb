@@ -36,7 +36,7 @@
         <%= author.last_name%><%= ", " unless author == @book.authors.last %>
         <% end %>
       </p>
-      <p>Average Review Score: <%= @book.average_score %> </p>
+      <p>Average Review Score: <%= @book.average_rating %> </p>
       <small class="top_three">Top Three Reviews: <% @book.sort_reviews(:desc).each do |review| %>
         "<%= review.title %>"
         Score: <%= review.score%> by <%= review.user.username%>

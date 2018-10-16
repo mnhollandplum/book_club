@@ -18,7 +18,7 @@
   </ul>
 </li>
 
-<p>Top Three Reviewers: <% @top_three_reviewers.each do |tr| %>
-  <%=tr%><%=", " unless tr == @top_three_reviewers.last%>
+<p>Top Three Reviewers: <% @top_three_reviewers.each do |t| %>
+  <%=t.username%><%=", " unless t == @top_three_reviewers.last%>
   <% end %>
 </p>

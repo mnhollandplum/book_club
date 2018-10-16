@@ -31,7 +31,7 @@ describe Book, type: :model do
       user_2 = User.create(username: "notfunky")
       review_1 = book_1.reviews.create(title: "This is Norm's review", explanation: "This is Norm's explanation of the review", score: 5, user: user_1)
       review_2 = book_1.reviews.create(title: "This is Nikki's review", explanation: "This is Nikki's explanation of the review", score: 3, user: user_2)
-      actual = book_1.average_score
+      actual = book_1.average_rating
       expected = 4
       expect(actual).to eq(expected)
     end

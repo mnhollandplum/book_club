@@ -23,12 +23,16 @@
   <div class="jumbotron">
   	<div class="container">
   		<h3>Book Club Database</h3>
-  		<p>Top Three Books: <% @top_three.each do |top| %>
+  		<p class="top_three">Top Three Books: <% @top_three.each do |top| %>
         <%=top.title%><%=", " unless top == @top_three.last%>
         <% end %>
       </p>
-  		<p>Bottom Three Books: <% @bottom_three.each do |bottom| %>
+  		<p class="bottom_three">Bottom Three Books: <% @bottom_three.each do |bottom| %>
         <%=bottom.title%><%=", " unless bottom == @bottom_three.last%>
+        <% end %>
+      </p>
+      <p>Top Three Reviewers: <% @top_three_reviewers.each do |t| %>
+        <%=t.username%><%=", " unless t == @top_three_reviewers.last%>
         <% end %>
       </p>
   		<br>
@@ -60,7 +64,7 @@
           <b>Title: <%= book.title %></b>
           <p># of Pages: <%= book.pages %></p>
           <p>Publication Year: <%= book.year %></p>
-          <p>Rating: <%= book.average_score %><p>
+          <p>Rating: <%= book.average_rating %><p>
           <p>Total Reviews: <%= book.reviews_count %><p>
           <p><i>Author(s):</i></p>
           <%book.authors.each do |author|%>
