@@ -14,12 +14,15 @@ class BooksController < ApplicationController
   end
 
   def show
-    if params['delete']
-      Book.destroy(params['id'])
-    else
-      @book = Book.find(params[:id])
-    end
+    @book = Book.find(params[:id])
+  end
 
+  def destroy
+    # @book = Book.find(params[:id])
+    AuthorBook.where(book_id: params['id']).destroy_all
+    Review.where(book_id: params['id']).destroy_all
+    Book.destroy(params['id'])
+    redirect_to books_path
   end
 
 end

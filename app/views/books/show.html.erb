@@ -51,7 +51,7 @@
         <% end %>
       </small>
   		<br>
-  		<p><a class="btn btn-primary btn-lg" href="#" role="button">Add your review »</a> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this book »</a></p>
+  		<p><a class="btn btn-primary btn-lg" href="#" role="button">Add your review »</a> <%= link_to 'destroy', @book, method: :delete %></a></p>
   	</div>
   </div>
   <div class="container">
