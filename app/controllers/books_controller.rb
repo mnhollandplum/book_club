@@ -18,7 +18,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    # @book = Book.find(params[:id])
     AuthorBook.where(book_id: params['id']).destroy_all
     Review.where(book_id: params['id']).destroy_all
     Book.destroy(params['id'])

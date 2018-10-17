@@ -46,3 +46,25 @@ describe 'user sees user show page' do
     expect(page.body.index(@review_2.explanation) > page.body.index(@review_1.explanation)).to eq(true)
   end
 end
+
+describe 'user sees user show page' do
+  it 'should delete review from user show page' do
+    @book_1 = Book.create(title: "Norms book", pages: 1566, year: 1967)
+
+    @author_1 = @book_1.authors.create(first_name: "Norm", last_name: "Schultz")
+
+    @user_1 = User.create(id: 1, username: "funky1")
+    @user_2 = User.create(id: 2, username: "dontshow")
+
+    @review_100 = @book_1.reviews.create(id: 100, title: "100", explanation: "a", score: 5, user: @user_1, created_at: Time.now + 4)
+    @review_101 = @book_1.reviews.create(id: 101, title: "101", explanation: "b", score: 3, user: @user_2, created_at: Time.now + 2)
+
+    visit user_path(1)
+    within("id=review_#{@review_100.id}")
+    click_on 'destroy'
+
+    expect(page).to_not have_content(review_100.title)
+
+
+  end
+end
