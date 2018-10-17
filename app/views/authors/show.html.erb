@@ -48,6 +48,6 @@
       <%end%>
       </p>
   		<br>
-  		<p> <a class="btn btn-primary btn-lg" href="#" role="button">Delete this Author »</a></p>
+  		<p><%= link_to 'destroy', author_path(@author.id), method: :delete %></p>
   	</div>
   </div>
