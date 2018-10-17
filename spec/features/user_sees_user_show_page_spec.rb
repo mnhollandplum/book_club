@@ -63,7 +63,7 @@ describe 'user sees user show page' do
     within("id=review_#{@review_100.id}")
     click_on 'destroy'
 
-    expect(page).to_not have_content(review_100.title)
+    expect(page).to_not have_content(@review_100.title)
 
 
   end

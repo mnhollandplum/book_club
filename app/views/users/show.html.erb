@@ -53,7 +53,7 @@
           <p>Score: <%=review.score%></p>
           <p>Description: <%=review.explanation%></p>
 
-          <%= link_to 'destroy', review_path(review), method: :delete %>
+          <%= link_to 'destroy', review_path(review.id), method: :delete %>
         </div>
 
       <%end%>
