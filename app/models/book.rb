@@ -3,6 +3,7 @@ class Book < ApplicationRecord
  has_many :author_books
  has_many :authors, through: :author_books
  has_many :reviews
+ accepts_nested_attributes_for :authors
 
  def reviews_count
    if reviews.count == 0
