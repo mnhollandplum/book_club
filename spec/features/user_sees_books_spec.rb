@@ -174,3 +174,23 @@ describe 'user sees statistics' do
   end
 
 end
+
+describe 'user can delete an author' do
+  it 'user wont see the author no mo' do
+    book_100 = Book.create(id: 100, title: "Book 100", pages: 1566, year: 1967)
+    book_101 = Book.create(id: 101, title: "Book 101", pages: 2, year: 1990)
+    author_100 = book_100.authors.create(id: 100, first_name: "Norm", last_name: "Schultz")
+    author_101 = book_100.authors.create(id: 101, first_name: "Nikki", last_name: "Holland-Plum")
+    author_102 = book_101.authors.create(id: 102, first_name: "Bob", last_name: "Smith")
+
+    visit author_path(100)
+    click_on "destroy"
+
+    expect(page).to_not have_content (author_100.first_name)
+    expect(page).to_not have_content (author_100.last_name)
+
+  end
+
+
+
+end
