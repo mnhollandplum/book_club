@@ -39,7 +39,6 @@
             <li><a href="http://localhost:3000/users/<%=@user.id%>?dir=desc">Descending</a></li>
           </ul>
         </div>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Delete this User »</a>
 
   	</div>
 
@@ -49,10 +48,14 @@
   <div class="container">
     <div class="row">
       <p>Review(s): <% @reviews.each do |review| %>
+        <div id="review_<%review.id%>"
         <h3>Title: <%=review.title %>
           <p>Score: <%=review.score%></p>
           <p>Description: <%=review.explanation%></p>
-          <p>Created_at: <%=review.created_at%></p>
+
+          <%= link_to 'destroy', review_path(review.id), method: :delete %>
+        </div>
+
       <%end%>
       </p>
     </div>
