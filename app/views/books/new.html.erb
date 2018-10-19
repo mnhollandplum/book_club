@@ -1,0 +1,21 @@
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+    <%= f.text_field :title, placeholder:'Book Title' %>
+    <%= f.label :pages %>
+    <%= f.number_field :pages, placeholder: 'Page Numbers' %>
+    <%= f.label :year %>
+    <%= f.number_field :year, placeholder: 'Year' %>
+    Authors:
+  <ul>
+    <%= f.fields_for :authors do |author_form| %>
+      <li>
+        <%= author_form.label :first_name %>
+        <%= author_form.text_field :last_name %>
+        <%= author_form.label :last_name %>
+        <%= author_form.text_field :last_name %>
+      </li>
+    <% end %>
+  </ul>
+
+    <%= f.submit %>
+  <%end%>
