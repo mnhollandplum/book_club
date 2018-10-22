@@ -18,11 +18,17 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    @book = Book.find(params[:id])
     AuthorBook.where(book_id: params['id']).destroy_all
     Review.where(book_id: params['id']).destroy_all
-    Book.destroy(params['id'])
+    @book.destroy
     redirect_to books_path
   end
+
+  # def destroy
+  #  book = Book.find(params[:id])
+  #  redirect_to books_path
+  # end
 
   def new
     @book = Book.new
@@ -34,6 +40,8 @@ class BooksController < ApplicationController
 
     redirect_to books_path(book)
   end
+
+private
 
   def book_params
     params.require(:book).permit(:title, :pages, :year, author_attributes: [:id, :first_name, :last_name])

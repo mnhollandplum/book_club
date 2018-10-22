@@ -1,73 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book Club: </title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-  </head>
-<body>
-  <nav class="navbar navbar-inverse navbar-static-top">
-  	<div class="container">
-  		<div class="navbar-header">
-  			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-  				<span class="sr-only">Toggle navigation</span>
-  				<span class="icon-bar"></span>
-  				<span class="icon-bar"></span>
-  				<span class="icon-bar"></span>
-  			</button>
-  			<a class="navbar-brand" href="http://localhost:3000/books">Book Club</a>
-  		</div>
-  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  			<ul class="nav navbar-nav navbar-right">
-          <li><a href="http://localhost:3000/books/new">Add New Book</a></li>
-  			</ul>
-  		</div>
-  	</div>
-  </nav>
-  <div class="jumbotron">
-  	<div class="container">
-  		<h1><%= @book.title %></h1>
-  		<h3>Published in: <%= @book.year %></h3>
-  		<p>Length: <%= @book.pages %> pages</p>
-      <p>Authors: <% @book.authors.each do |author| %>
-        <%= author.first_name %>
-        <%= author.last_name%><%= ", " unless author == @book.authors.last %>
-        <% end %>
-      </p>
-      <p>Average Review Score: <%= @book.average_rating %> </p>
-      <small class="top_three">Top Three Reviews: <% @book.sort_reviews(:desc).each do |review| %>
-        "<%= review.title %>"
-        Score: <%= review.score%> by <%= review.user.username%>
-        <%=". " unless review == @book.sort_reviews(:desc).last%>
-        <% end %>
-      </small>
-      <br>
-      <small class="bottom_three">Bottom Three Reviews: <% @book.sort_reviews(:asc).each do |review| %>
-        "<%= review.title %>"
-        Score: <%= review.score%> by <%= review.user.username%>
-        <%=". " unless review == @book.sort_reviews(:asc).last%>
-        <% end %>
-      </small>
-  		<br>
-  		<p><a class="btn btn-primary btn-lg" href="#" role="button">Add your review »</a> <%= link_to 'destroy', @book, method: :delete %></a></p>
-  	</div>
-  </div>
-  <div class="container">
-    <h3>Reviews</h3>
-    <% @book.reviews.each do |review| %>
-      <div class="row">
-        <p><b><%= review.title %></b></p>
-        <p><b>Average Score: <%= review.score %></b></p>
-        <p>User: <%= review.user_id %></p>
-        <p>Review: <%= review.explanation %></p>
-      </div>
-    <% end %>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</body>
-
-</html>
+<div class="jumbotron">
+	<div class="container">
+		<h1><%= @book.title %></h1>
+		<h3>Published in: <%= @book.year %></h3>
+		<p>Length: <%= @book.pages %> pages</p>
+    <p>Authors: <% @book.authors.each do |author| %>
+      <%= author.first_name %>
+      <%= author.last_name%><%= ", " unless author == @book.authors.last %>
+      <% end %>
+    </p>
+    <p>Average Review Score: <%= @book.average_rating %> </p>
+    <small class="top_three">Top Three Reviews: <% @book.sort_reviews(:desc).each do |review| %>
+      "<%= review.title %>"
+      Score: <%= review.score%> by <%= review.user.username%>
+      <%=". " unless review == @book.sort_reviews(:desc).last%>
+      <% end %>
+    </small>
+    <br>
+    <small class="bottom_three">Bottom Three Reviews: <% @book.sort_reviews(:asc).each do |review| %>
+      "<%= review.title %>"
+      Score: <%= review.score%> by <%= review.user.username%>
+      <%=". " unless review == @book.sort_reviews(:asc).last%>
+      <% end %>
+    </small>
+		<br>
+		<p>
+		<%= link_to 'Delete', book_path(@book), method: "delete" %>
+    </p>
+	</div>
+</div>
+<div class="container">
+  <h3>Reviews</h3>
+  <% @book.reviews.each do |review| %>
+    <div class="row">
+      <p><b><%= review.title %></b></p>
+      <p><b>Average Score: <%= review.score %></b></p>
+      <p>User: <%= review.user_id %></p>
+      <p>Review: <%= review.explanation %></p>
+    </div>
+  <% end %>
+</div>
