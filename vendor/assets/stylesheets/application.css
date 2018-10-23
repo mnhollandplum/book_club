@@ -17,21 +17,6 @@
   background-repeat: repeat-x;
  	background-color: black}
 
-/* .navbar-default .navbar-brand {
-  color: red;
-}
-.navbar-default .navbar-nav > li > a {
-  color: white;
-}
-.navbar-default .navbar-brand:hover {
-  color: blue;
-  opacity: 0.75;
-}
-.navbar-default .navbar-nav > li > a:hover {
-  color: blue;
-  opacity: 0.75;
-} */
-
  .jumbotron { padding:10px 0 5px 0;
  	margin-top: 0;
  	margin-bottom: 0;
@@ -39,7 +24,7 @@
  	background-color: black;
   background-image: url("bookwallbw.jpg");}
 
- .breakdown{ flex-wrap: nowrap; }
+ .breakdown { flex-wrap: nowrap; }
 
  .dropdown { display: inline; }
 
