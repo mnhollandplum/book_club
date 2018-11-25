@@ -13,20 +13,20 @@
   </head>
   <body>
   <nav class="navbar navbar-inverse navbar-static-top">
-	<div class="navbar">
-  	<div class="container">
-  		<div class="navbar-header">
-  			<a class="navbar-brand" href='<%= books_path %>'><b>Book Club Database</b></a>
-  		</div>
-  		<div class="container">
-  			<ul class="nav navbar-nav navbar-right">
-  				<li><a href='<%= new_book_path %>'>Add New Book</a></li>
-  				<li><a href="#">About</a></li>
-  			</ul>
-  		</div>
-  	</div>
-  </div>
-</nav>
+  	<div class="navbar">
+    	<div class="container">
+    		<div class="navbar-header">
+    			<a class="navbar-brand" href='<%= books_path %>'><b>Book Club Database</b></a>
+    		</div>
+    		<div class="container">
+    			<ul class="nav navbar-nav navbar-right">
+    				<li><a href='<%= new_book_path %>'>Add New Book</a></li>
+    				<li><a href="<%= new_user_path %>">Join</a></li>
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+  </nav>
   <%= yield %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
