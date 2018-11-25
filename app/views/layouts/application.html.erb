@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookClub</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Club</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
-    <%= yield %>
-  </body>
+  <nav class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar">
+    	<div class="container">
+    		<div class="navbar-header">
+    			<a class="navbar-brand" href='<%= books_path %>'><b>Book Club Database</b></a>
+    		</div>
+    		<div class="container">
+    			<ul class="nav navbar-nav navbar-right">
+    				<li><a href='<%= new_book_path %>'>Add New Book</a></li>
+    				<li><a href="<%= new_user_path %>">Join</a></li>
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+  </nav>
+  <%= yield %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
 </html>

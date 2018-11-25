@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+.navbar { margin-bottom: 0;
+  background-repeat: repeat-x;
+ 	background-color: black}
+
+ .jumbotron { padding:10px 0 5px 0;
+ 	margin-top: 0;
+ 	margin-bottom: 0;
+  color: white;
+ 	background-color: black;
+  background-image: url("bookwallbw.jpg");}
+
+ .breakdown { flex-wrap: nowrap; }
+
+ .dropdown { display: inline; }
+
+ .col-md-2:nth-child(6n+1) { clear: both; }
+
+ .col-md-2 { padding-top: 40px; }

@@ -1,88 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Book Club</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-  </head>
-<body>
-  <nav class="navbar navbar-inverse navbar-static-top">
-  	<div class="container">
-  		<div class="navbar-header">
-  			<a class="navbar-brand" href="http://localhost:3000/books">Home </a>
-  		</div>
-  		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  			<ul class="nav navbar-nav navbar-right">
-          <li><a href="http://localhost:3000/books/new">Add New Book</a></li>
-  			</ul>
-  		</div>
-  	</div>
-  </nav>
-  <div class="jumbotron">
-  	<div class="container">
-  		<h3>Book Club Database</h3>
-  		<p class="top_three">Top Three Books: <% @top_three.each do |top| %>
-        <%=top.title%><%=", " unless top == @top_three.last%>
-        <% end %>
-      </p>
-  		<p class="bottom_three">Bottom Three Books: <% @bottom_three.each do |bottom| %>
-        <%=bottom.title%><%=", " unless bottom == @bottom_three.last%>
-        <% end %>
-      </p>
-      <p>Top Three Reviewers: <% @top_three_reviewers.each do |t| %>
-        <%=t.username%><%=", " unless t == @top_three_reviewers.last%>
-        <% end %>
-      </p>
-  		<br>
-  		<div class="dropdown"> sort by: <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Average Rating<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="http://localhost:3000/books?criteria=avg_rating&dir=asc">Asscending</a></li>
-          <li><a href="http://localhost:3000/books?criteria=avg_rating&dir=desc">Descending</a></li>
-        </ul>
+<div class="jumbotron">
+	<div class="container">
+		<p class="top_three"><b>Top Three Books: </b><% @top_three.each do |top| %>
+      <%=top.title%><%=", " unless top == @top_three.last%>
+      <% end %>
+    </p>
+		<p class="bottom_three"><b>Bottom Three Books: </b><% @bottom_three.each do |bottom| %>
+      <%=bottom.title%><%=", " unless bottom == @bottom_three.last%>
+      <% end %>
+    </p>
+    <p><b>Top Three Reviewers: </b><% @top_three_reviewers.each do |t| %>
+      <%=t.username%><%=", " unless t == @top_three_reviewers.last%>
+      <% end %>
+    </p>
+		<br>
+  </div>
+</div>
+
+<div class="container">
+  <div class="dropdown"> sort by: <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Average Rating<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/books?criteria=avg_rating&dir=asc">Ascending</a></li>
+      <li><a href="http://localhost:3000/books?criteria=avg_rating&dir=desc">Descending</a></li>
+    </ul>
+  </div>
+  <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Number of Pages<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/books?criteria=page_num&dir=asc">Ascending</a></li>
+      <li><a href="http://localhost:3000/books?criteria=page_num&dir=desc">Descending</a></li>
+      </ul>
+   </div>
+   <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Number of Reviews<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/books?criteria=review_num&dir=asc">Ascending</a></li>
+      <li><a href="http://localhost:3000/books?criteria=review_num&dir=desc">Descending</a></li>
+      </ul>
+   </div>
+
+  <div class="row">
+  <% @books.each do |book| %>
+		<div class="col-md-2">
+      <a href='<%= book_path(book) %>'><b><%= book.title %></b></a>
+      <p># of Pages: <%= book.pages %></p>
+      <p>Publication Year: <%= book.year %></p>
+      <p>Rating: <%= book.average_rating %><p>
+      <p>Total Reviews: <%= book.reviews_count %><p>
+      <p><i>Author(s):</i></p>
+      <%book.authors.each do |author|%>
+      <div class="col-md-12">
+        <div class="breakdown">
+          <p><b><%= author.first_name + " " + author.last_name %></b></p>
+        </div>
       </div>
-  		<div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Number of Pages<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="http://localhost:3000/books?criteria=page_num&dir=asc">Asscending</a></li>
-          <li><a href="http://localhost:3000/books?criteria=page_num&dir=desc">Descending</a></li>
-          </ul>
-			 </div>
-  		 <div class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Number of Reviews<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="http://localhost:3000/books?criteria=review_num&dir=asc">Asscending</a></li>
-          <li><a href="http://localhost:3000/books?criteria=review_num&dir=desc">Descending</a></li>
-          </ul>
-			 </div>
-    </div>
+      <% end %>
+		</div>
+  <% end %>
   </div>
-
-  <div class="container">
-    <div class="row">
-    <% @books.each do |book| %>
-    		<div class="col-md-2">
-          <b>Title: <%= book.title %></b>
-          <p># of Pages: <%= book.pages %></p>
-          <p>Publication Year: <%= book.year %></p>
-          <p>Rating: <%= book.average_rating %><p>
-          <p>Total Reviews: <%= book.reviews_count %><p>
-          <p><i>Author(s):</i></p>
-          <%book.authors.each do |author|%>
-          <div class="col-md-12">
-            <div class="breakdown">
-              <p><b><%= author.first_name + " " + author.last_name %></b></p>
-            </div>
-          </div>
-          <% end %>
-
-    		</div>
-
-    <% end %>
-    </div>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+</div>

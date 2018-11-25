@@ -1,21 +1,30 @@
-<%= form_for @book do |f| %>
-  <%= f.label :title %>
-    <%= f.text_field :title, placeholder:'Book Title' %>
-    <%= f.label :pages %>
-    <%= f.number_field :pages, placeholder: 'Page Numbers' %>
-    <%= f.label :year %>
-    <%= f.number_field :year, placeholder: 'Year' %>
-    Authors:
-  <ul>
-    <%= f.fields_for :authors do |author_form| %>
-      <li>
+<div class="jumbotron">
+	<div class="container">
+		<h3>Add a New Book</h3>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+		<div class="col-md-12">
+      <h3>Book Info</h3>
+        <%= form_for @book do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title, placeholder:'Book Title' %>
+        <%= f.label :pages %>
+        <%= f.number_field :pages, placeholder: 'Page Numbers' %>
+        <%= f.label :year %>
+        <%= f.date_field :year, placeholder: 'Year' %>
+      <br>
+      <h3>Author(s)</h3>
+        <%= f.fields_for :authors do |author_form| %>
         <%= author_form.label :first_name %>
         <%= author_form.text_field :last_name %>
         <%= author_form.label :last_name %>
         <%= author_form.text_field :last_name %>
-      </li>
-    <% end %>
-  </ul>
-
-    <%= f.submit %>
-  <%end%>
+      <% end %>
+      <%= f.submit %>
+      <%end%>
+    </div>
+  </div>
+</div>
